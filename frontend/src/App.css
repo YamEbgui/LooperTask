@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+  margin: 3vh;
+}
+
+/* RAW */
+.raw {
+  margin: 1vh;
+  padding: 1vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: aqua;
+}
