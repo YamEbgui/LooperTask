@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function Raw({ sound }) {
+export default function Row({ soundName, sound }) {
   const [mute, setMute] = useState(false);
 
   const handleMuteClick = () => {
@@ -9,9 +9,9 @@ export default function Raw({ sound }) {
   };
 
   return (
-    <div className="raw">
-      <h3>sound</h3>
-      <audio autoPlay muted={mute} src={sound}></audio>
+    <div className="row">
+      <h3>{soundName}</h3>
+      <audio className="audioElement" autoPlay muted={mute} src={sound}></audio>
       <button onClick={handleMuteClick}>mute</button>
     </div>
   );
