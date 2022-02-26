@@ -5,6 +5,7 @@ import { colors } from "../helpers/colors";
 import Row from "./Row";
 import { FaPlay, FaPause, FaStop } from "react-icons/fa";
 import { ImLoop } from "react-icons/im";
+import Cursor from "./Cursor";
 const sounds = require("../helpers/sounds.json");
 
 export default function RowGroup() {
@@ -47,16 +48,17 @@ export default function RowGroup() {
 
   return (
     <div className="rowGroup">
+      <Cursor isPlaying={isPlaying} />
       {soundtracks}
       <div className="buttonsArea">
         <button id="playButton" className="controlButton" onClick={handlePlay}>
-          {isPlaying ? <FaPause /> : <FaPlay />}
+          {isPlaying ? <FaPause size={"2vh"} /> : <FaPlay size={"2vh"} />}
         </button>
         <button id="stopButton" className="controlButton" onClick={handleStop}>
-          <FaStop />
+          <FaStop size={"2vh"} />
         </button>
         <button id="loopButton" className="controlButton" onClick={handleLoop}>
-          <ImLoop color={isLooping ? "white" : "black"} />
+          <ImLoop size={"2vh"} color={isLooping ? "white" : "black"} />
         </button>
       </div>
     </div>

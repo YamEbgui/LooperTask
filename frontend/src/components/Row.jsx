@@ -19,7 +19,7 @@ export default function Row({ color, soundName, sound, isPlayingFunc }) {
 
   return (
     <div className="row" style={{ backgroundColor: `${color}` }}>
-      <h3>{soundName}</h3>
+      {soundName}
       <audio
         ref={audioRef}
         onEnded={handleEnding}
@@ -28,7 +28,11 @@ export default function Row({ color, soundName, sound, isPlayingFunc }) {
         src={sound}
       ></audio>
       <button className="muteButton" onClick={handleMuteClick}>
-        {mute ? <BiVolumeMute /> : <BiVolumeFull />}
+        {mute ? (
+          <BiVolumeMute size={"1.5vh"} />
+        ) : (
+          <BiVolumeFull size={"1.5vh"} />
+        )}
       </button>
     </div>
   );

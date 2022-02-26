@@ -1,26 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap");
-/* body {
-  background-color: darkgray;
-} */
+body {
+  background-color: rgb(182, 173, 173);
+}
+
 .App {
   text-align: center;
-  margin: 3vh;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 
 /* ROW */
 .row {
-  display: inline-block;
-  margin: 0.1vh;
-  font-size: 2vh;
+  display: flex;
+  height: 5vh;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  font-size: 2vh;
   font-family: "ZCOOL QingKe HuangYou", cursive;
-  border: 0.6vh black double;
+  /* border: 0.6vh black double; */
 }
 
 /* ROW GROUP */
 .rowGroup {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* BUTTONS */
@@ -29,6 +34,7 @@
   background: none;
   color: inherit;
   border: none;
+  align-items: center;
   padding: 1vh;
   transform: scale(1.5);
   max-width: min-content;
@@ -46,18 +52,17 @@
   justify-content: space-around;
 }
 
-/* CSS */
 .controlButton {
   align-items: center;
+  height: 8vh;
+  width: 8vh;
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border: 0;
+  border: 0.1vh black solid;
   border-radius: 2vh;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  line-height: 1em;
-  padding: 2vh;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
@@ -69,5 +74,26 @@
 .controlButton:active,
 .controlButton:hover {
   color: white;
+  border: 0.1vh white solid;
   background-image: linear-gradient(30deg, #af40ff, #5b42f3 50%, #00ddeb);
+}
+
+.cursor {
+  display: block;
+  position: absolute;
+  background-color: white;
+  width: 1px;
+  height: 45vh;
+}
+
+@media screen and (max-width: 600px) {
+  .controlButton {
+    height: 10vh;
+    width: 10vh;
+    margin-right: 1vh;
+  }
+  .row {
+    max-height: 5vh;
+    font-size: 1.5vh;
+  }
 }

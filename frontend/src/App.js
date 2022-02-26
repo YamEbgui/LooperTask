@@ -1,5 +1,5 @@
 import "./App.css";
-import Row from "./components/Row";
+import Cursor from "./components/Cursor";
 import RowGroup from "./components/RowGroup";
 
 function App() {
