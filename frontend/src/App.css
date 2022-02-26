@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap");
+/* body {
+  background-color: darkgray;
+} */
 .App {
   text-align: center;
   margin: 3vh;
@@ -5,10 +9,65 @@
 
 /* ROW */
 .row {
-  margin: 1vh;
+  display: inline-block;
+  margin: 0.1vh;
+  font-size: 2vh;
+  justify-content: space-between;
+  font-family: "ZCOOL QingKe HuangYou", cursive;
+  border: 0.6vh black double;
+}
+
+/* ROW GROUP */
+.rowGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+/* BUTTONS */
+.muteButton {
+  display: flex;
+  background: none;
+  color: inherit;
+  border: none;
   padding: 1vh;
+  transform: scale(1.5);
+  max-width: min-content;
+  max-height: max-content;
+}
+
+.muteButton:hover {
+  color: white;
+}
+
+.buttonsArea {
+  margin: 1vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  background-color: aqua;
+  justify-content: space-around;
+}
+
+/* CSS */
+.controlButton {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 2vh;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  line-height: 1em;
+  padding: 2vh;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.controlButton:active,
+.controlButton:hover {
+  color: white;
+  background-image: linear-gradient(30deg, #af40ff, #5b42f3 50%, #00ddeb);
 }
