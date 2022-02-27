@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=ZCOOL+QingKe+HuangYou&display=swap");
+
+body {
+  background-color: rgb(182, 173, 173);
+}
+
+.App {
+  text-align: center;
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  height: 5vh;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2vh;
+  font-family: "ZCOOL QingKe HuangYou", cursive;
+  border: 0.6vh black double;
+}
+
+/* ROW GROUP */
+.rowGroup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* BUTTONS */
+.muteButton {
+  display: flex;
+  background: none;
+  color: inherit;
+  border: none;
+  align-items: center;
+  padding: 1vh;
+  transform: scale(1.5);
+  max-width: min-content;
+  max-height: max-content;
+}
+
+.muteButton:hover {
+  color: white;
+}
+
+.active {
+  filter: brightness(60%);
+}
+
+.buttonsArea {
+  margin: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.controlButton {
+  align-items: center;
+  height: 8vh;
+  width: 8vh;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0.1vh black solid;
+  border-radius: 2vh;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.controlButton:active,
+.controlButton:hover {
+  color: white;
+  border: 0.1vh white solid;
+  background-image: linear-gradient(30deg, #af40ff, #5b42f3 50%, #00ddeb);
+}
+
+/* CURSOR */
+.cursor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  cursor: grab;
+}
+
+#cursorLine {
+  background-color: white;
+  width: 1px;
+  height: 55.8vh;
+}
+
+#handIcon:hover {
+  transform: scale(1.2);
+}
+
+/* HEADER */
+#header {
+  font-size: 4vh;
+  color: black;
+  font-family: "Permanent Marker", cursive;
+}
+
+@media screen and (max-width: 600px) {
+  .controlButton {
+    height: 10vh;
+    width: 10vh;
+    margin-right: 1vh;
+  }
+  .row {
+    max-height: 5vh;
+    font-size: 1.5vh;
+  }
+}
