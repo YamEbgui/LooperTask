@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 //import help function
 import { improveString } from "../helpers";
-//import array with 9 colors for the rows color
+//import array with 9 colors for the row colors
 import { colors } from "../helpers/colors";
 //import components
 import Row from "./Row";
@@ -13,7 +13,7 @@ const sounds = require("../helpers/sounds.json");
 export default function RowGroup() {
   const [isLooping, setIsLooping] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isStopped, setIsStopped] = useState(true);
+  const [isStopped, setIsStopped] = useState(false);
 
   //handle click on loop button
   //set all audio elements loop or disable loop
@@ -60,7 +60,11 @@ export default function RowGroup() {
 
   return (
     <div className="rowGroup">
-      <Cursor isPlaying={isPlaying} isStopped={isStopped} />
+      <Cursor
+        isPlaying={isPlaying}
+        isStopped={isStopped}
+        setIsStopped={setIsStopped}
+      />
       {soundtracks}
       <ControlButtons
         isPlaying={isPlaying}
