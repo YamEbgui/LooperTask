@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
+import { setAllAudioTime } from "../helpers";
+import { BsFillHandIndexThumbFill } from "react-icons/bs";
 
-export default function Cursor({ isPlaying }) {
+export default function Cursor({ isPlaying, isStopped }) {
   const [percentageComplete, setPercentageComplete] = useState(0);
   const audioRef = useRef();
   const intervalRef = useRef();
@@ -26,6 +28,9 @@ export default function Cursor({ isPlaying }) {
   };
 
   useEffect(() => {
+    if (isStopped) {
+      setPercentageComplete(0);
+    }
     if (isPlaying) {
       startTimer();
     } else {
@@ -40,10 +45,29 @@ export default function Cursor({ isPlaying }) {
     }
   });
 
+  const handleDrop = (e) => {
+    const percentage = Math.round(
+      ((e.pageX - window.innerWidth * 0.2) / (window.innerWidth * 0.6)) * 100
+    );
+    console.log(e.pageX, "pre", percentage);
+    if (percentage > 100 || percentage < 0) {
+      setAllAudioTime(0, ".audioElement");
+      setPercentageComplete(0);
+    } else {
+      setAllAudioTime(percentage, ".audioElement");
+      setPercentageComplete(percentage);
+    }
+  };
+
   return (
-    <div
+    <span
       className="cursor"
-      style={{ marginLeft: `${(percentageComplete / 100) * 60}vw` }}
-    ></div>
+      style={{ marginLeft: `${(percentageComplete / 100) * 60 - 0.9}vw` }}
+      draggable="true"
+      onDragEnd={handleDrop}
+    >
+      <div id="cursorLine"></div>
+      <BsFillHandIndexThumbFill id="handIcon" size={"1.8vw"} color={"white"} />
+    </span>
   );
 }

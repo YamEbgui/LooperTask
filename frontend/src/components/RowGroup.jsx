@@ -1,17 +1,22 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+//import help function
 import { improveString } from "../helpers";
+//import array with 9 colors for the rows color
 import { colors } from "../helpers/colors";
+//import components
 import Row from "./Row";
-import { FaPlay, FaPause, FaStop } from "react-icons/fa";
-import { ImLoop } from "react-icons/im";
 import Cursor from "./Cursor";
+import ControlButtons from "./ControlButtons";
+//import array with the audio files names to found then in Public directory
 const sounds = require("../helpers/sounds.json");
 
 export default function RowGroup() {
   const [isLooping, setIsLooping] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isStopped, setIsStopped] = useState(true);
 
+  //handle click on loop button
+  //set all audio elements loop or disable loop
   const handleLoop = () => {
     document.querySelectorAll(".audioElement").forEach((audioElement) => {
       audioElement.loop = !audioElement.loop;
@@ -19,28 +24,35 @@ export default function RowGroup() {
     setIsLooping((prevState) => !prevState);
   };
 
+  //handle click on play button
+  //play or pause all audio elements on the page
   const handlePlay = () => {
     document.querySelectorAll(".audioElement").forEach((audioElement) => {
       audioElement.paused ? audioElement.play() : audioElement.pause();
     });
+    setIsStopped(false);
     setIsPlaying((prevState) => !prevState);
   };
 
+  //handle click on stop button
+  //stop all audio elements and set their current time to 0
   const handleStop = () => {
     document.querySelectorAll(".audioElement").forEach((audioElement) => {
       if (!audioElement.paused) audioElement.pause();
       audioElement.currentTime = 0;
     });
+    setIsStopped(true);
     setIsPlaying(false);
   };
 
+  //return ROW component for every audio file from list of audio files names
   const soundtracks = sounds.filesNames.map((fileName, index) => {
     return (
       <Row
         key={fileName}
         color={colors[index]}
         soundName={improveString(fileName)}
-        sound={`${process.env.PUBLIC_URL}/loopFiles/${fileName}.mp3`}
+        soundSrc={`${process.env.PUBLIC_URL}/loopFiles/${fileName}.mp3`}
         isPlayingFunc={setIsPlaying}
       />
     );
@@ -48,19 +60,15 @@ export default function RowGroup() {
 
   return (
     <div className="rowGroup">
-      <Cursor isPlaying={isPlaying} />
+      <Cursor isPlaying={isPlaying} isStopped={isStopped} />
       {soundtracks}
-      <div className="buttonsArea">
-        <button id="playButton" className="controlButton" onClick={handlePlay}>
-          {isPlaying ? <FaPause size={"2vh"} /> : <FaPlay size={"2vh"} />}
-        </button>
-        <button id="stopButton" className="controlButton" onClick={handleStop}>
-          <FaStop size={"2vh"} />
-        </button>
-        <button id="loopButton" className="controlButton" onClick={handleLoop}>
-          <ImLoop size={"2vh"} color={isLooping ? "white" : "black"} />
-        </button>
-      </div>
+      <ControlButtons
+        isPlaying={isPlaying}
+        isLooping={isLooping}
+        handlePlay={handlePlay}
+        handleLoop={handleLoop}
+        handleStop={handleStop}
+      />
     </div>
   );
 }

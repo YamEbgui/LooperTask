@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { BiVolumeFull, BiVolumeMute } from "react-icons/bi";
 
-export default function Row({ color, soundName, sound, isPlayingFunc }) {
+export default function Row({ color, soundName, soundSrc, isPlayingFunc }) {
   const [mute, setMute] = useState(false);
   const audioRef = useRef();
 
@@ -19,13 +19,13 @@ export default function Row({ color, soundName, sound, isPlayingFunc }) {
 
   return (
     <div className="row" style={{ backgroundColor: `${color}` }}>
-      {soundName}
+      <p style={{ marginLeft: "1vh" }}>{soundName}</p>
       <audio
         ref={audioRef}
         onEnded={handleEnding}
         className="audioElement"
         muted={mute}
-        src={sound}
+        src={soundSrc}
       ></audio>
       <button className="muteButton" onClick={handleMuteClick}>
         {mute ? (
